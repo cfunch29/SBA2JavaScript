@@ -92,6 +92,17 @@ function getLearnerData(course, ag, submissions) {
   const result = [];
 // my logic 
 
+// 1. currentAssignments - find the assignments that are due now ignore the future one 
+
+// 2. identify the learners
+
+// 3. for each learner, for each assignment: find submission, adjust score, store the result
+//  find submission whose assignment_id matches the assignment's id
+
+// 4. calculate averages = (submission.score / points_possible)
+
+// 5. return the final array
+
   return result;
 }
 
