@@ -9,7 +9,17 @@
 
 ## My Process 
 1. Loop through assignments and keep the assignment that are due before 2025 (skip the future assignment that learner 1 submitted)
+2. With the assignment ids get the learner ids from the learner submissions
+3. create learner objects using learner ids. create variable: learner. find total score & possible points (use to calculate avg at the end)
+4. Use assignments from step 1 to get assignments for each learner (first 2 assignments)
+5. Using the learner assignments calculate for late assignments (*10% - multiply assignments possible points by .1)
+6. get percent for each assignment (1, 2) for each learner object
+
+
 
 ## Reflection 
+* Determine what is the big loop (what connects everything) - Learners
+* Establish the difference between the functions and the parameters
+* Understand that we are breaking down small parts of a big problem using helpers 
 
 
