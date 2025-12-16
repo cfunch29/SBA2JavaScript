@@ -121,7 +121,7 @@ const learnerObj = {
         // need to define active assignment 
         const activeAssignmnent = ag.assignments[a];
         const today = "2025-12-01"
-       if (assignments.due_at < today) {
+       if (assignments.due_at > today) {
         continue;
        }
         for (let s = 0; s < submissions.length; s++){
@@ -138,7 +138,7 @@ const learnerObj = {
                 const percentage = (submissions.score / assignments.points_possible)
             }
         }
-        learnerObj [activeAssignmnent.id] = activeAssignmnent;  
+        learnerObj[activeAssignmnent.id] = (submissions.score / assignments.points_possible);  
     }
    
     result.push(learnerObj)
@@ -146,7 +146,7 @@ const learnerObj = {
 };
 
 
-console.log(ag.assignments)
+console.log(ag.assignments.id, assignments.due_at)
 
 
 
