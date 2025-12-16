@@ -94,6 +94,8 @@ function getLearnerData(course, ag, submissions) {
 // my logic 
 // 2. identify the learners
 const learners = [125, 132];
+const assignments= [];
+
 for (let i = 0; i <learners.length; i++) {
     const learnerId = learners[i];
     // console.log(learnerId)
@@ -104,7 +106,10 @@ const learnerObj = {
     for (let a = 0; a < ag.assignments.length; a++){
         // need to define active assignment 
         const activeAssignmnent = ag.assignments[a];
-        let currentAssignment = false;
+        const today = "2025-12-01"
+       if (assignments.due_at > today) {
+        continue;
+       }
         for (let s = 0; s < submissions.length; s++){
             const submitted = submissions[s];
 // 3. for each learner, for each assignment: find submission, adjust score, store the result
@@ -113,13 +118,17 @@ const learnerObj = {
             if (
                 submitted.learner_id == learnerId &&
                 submitted.assignment_id == activeAssignmnent.id
-            )
-            currentAssignment = true;
+            ){
+                 // replaced true/false with actual percentages
+            // 4. calculate averages = (submission.score / points_possible)
+                const percentage = (submissions.score / assignments.points_possible)
+            }
             break;
         }
-         learnerObj [activeAssignmnent.id] = currentAssignment;
-    result.push(learnerObj)
+        learnerObj [activeAssignmnent.id] = activeAssignmnent;  
     }
+   
+    result.push(learnerObj)
    
 };
 
@@ -128,7 +137,7 @@ const learnerObj = {
 
 
 
-// 4. calculate averages = (submission.score / points_possible)
+
 
 // 5. return the final array (learnerObj.push to add to end of array)
 
