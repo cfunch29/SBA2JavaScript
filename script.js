@@ -92,19 +92,24 @@ function getLearnerData(course, ag, submissions) {
   // here, we would process this data to achieve the desired result.
   const result = [];
 // my logic 
+// 2. identify the learners
 const learners = [125, 132];
 for (let i = 0; i <learners.length; i++) {
     const learnerId = learners[i];
+    // console.log(learnerId)
 const learnerObj = {
     id: learnerId
     };
+    // 1. currentAssignments - find the assignments that are due now ignore the future one 
     for (let a = 0; a < ag.assignments.length; a++){
         // need to define active assignment 
         const activeAssignmnent = ag.assignments[a];
         let currentAssignment = false;
         for (let s = 0; s < submissions.length; s++){
             const submitted = submissions[s];
+// 3. for each learner, for each assignment: find submission, adjust score, store the result
 
+//  find submission whose assignment_id matches the assignment's id
             if (
                 submitted.learner_id == learnerId &&
                 submitted.assignment_id == activeAssignmnent.id
@@ -112,16 +117,16 @@ const learnerObj = {
             currentAssignment = true;
             break;
         }
-    }
-    learnerObj [activeAssignmnent.id] = currentAssignment;
+         learnerObj [activeAssignmnent.id] = currentAssignment;
     result.push(learnerObj)
+    }
+   
 };
-// 1. currentAssignments - find the assignments that are due now ignore the future one 
 
-// 2. identify the learners
 
-// 3. for each learner, for each assignment: find submission, adjust score, store the result
-//  find submission whose assignment_id matches the assignment's id
+
+
+
 
 // 4. calculate averages = (submission.score / points_possible)
 
