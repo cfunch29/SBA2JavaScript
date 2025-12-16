@@ -92,22 +92,9 @@ function getLearnerData(course, ag, submissions) {
     // my logic 
     // 2. identify the learners
     const learners = [125, 132];
-
-    // for (let b = 0; b < submissions.length; b++){
-    //     const learnerId = submissions[b].learner_id;
-    //     let exists = false;
-
-    //     for (let c = 0; c <learners.length; c++) {
-    //     const learnerId = learners[c];{ 
-    //     exists = true
-    //        break;
-    //     }
-    //     }
-    //     if (exists == false) {
-    //         learners.push(learnerId);
-    //     }
-    // }
-    for (let i = 0; i < learners.length; i++) {
+    // add try/catch
+    try {
+        for (let i = 0; i < learners.length; i++) {
         const learnerId = learners[i];
         // console.log(learnerId)
         const learnerObj = {
@@ -126,7 +113,7 @@ function getLearnerData(course, ag, submissions) {
             for (let s = 0; s < submissions.length; s++) {
                 const submitted = submissions[s];
                 // 3. for each learner, for each assignment: find submission, adjust score, store the result
-
+                // need to add code for late assignments 
                 let percentage
                 //  find submission whose assignment_id matches the assignment's id
                 if (
@@ -149,11 +136,12 @@ function getLearnerData(course, ag, submissions) {
 
         result.push(learnerObj)
 
-    };
+        };
+        console.log(result)
 
+    } catch (err){console.error("Error calculating learner data:" ,err.message)}
 
-
-    console.log(result)
+    
 
 
 
