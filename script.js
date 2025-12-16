@@ -84,7 +84,7 @@ const LearnerSubmissions = [
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
-console.log(result);
+// console.log(result);
 
 
 
@@ -96,6 +96,20 @@ function getLearnerData(course, ag, submissions) {
 const learners = [125, 132];
 const assignments= [];
 
+for (let b = 0; b < submissions.length; b++){
+    const learnerId = submissions[b].learner_id;
+    let exists = false;
+    
+    for (let c = 0; c <learners.length; c++) {
+    const learnerId = learners[c];{ 
+    exists = true
+       break;
+    }
+    }
+    if (exists == false) {
+        learners.push(learnerId);
+    }
+}
 for (let i = 0; i <learners.length; i++) {
     const learnerId = learners[i];
     // console.log(learnerId)
@@ -107,7 +121,7 @@ const learnerObj = {
         // need to define active assignment 
         const activeAssignmnent = ag.assignments[a];
         const today = "2025-12-01"
-       if (assignments.due_at > today) {
+       if (assignments.due_at < today) {
         continue;
        }
         for (let s = 0; s < submissions.length; s++){
@@ -123,7 +137,6 @@ const learnerObj = {
             // 4. calculate averages = (submission.score / points_possible)
                 const percentage = (submissions.score / assignments.points_possible)
             }
-            break;
         }
         learnerObj [activeAssignmnent.id] = activeAssignmnent;  
     }
@@ -133,7 +146,7 @@ const learnerObj = {
 };
 
 
-
+console.log(ag.assignments)
 
 
 
